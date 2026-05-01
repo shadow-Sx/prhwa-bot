@@ -44,7 +44,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "XAnimelarBot is running!"
+    return "Manhwa is running!"
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -110,7 +110,7 @@ def required_bots_menu():
 @bot.message_handler(commands=['admin'])
 def admin_start(message):
     if message.from_user.id != ADMIN_ID:
-        bot.reply_to(message, "❌ Siz admin emassiz!")
+        bot.reply_to(message, "")
         return
     users_collection.update_one({"user_id": message.from_user.id},
                                 {"$set": {"user_id": message.from_user.id}}, upsert=True)
@@ -1205,7 +1205,7 @@ def start(message):
         markup.add(InlineKeyboardButton("📝 Bot Haqida", callback_data="about"),
                    InlineKeyboardButton("🔒 Yopish", callback_data=f"close:{message.message_id}"))
         sent = bot.reply_to(message,
-            "<b>Bu bot orqali kanaldagi animelarni yuklab olishingiz mumkin.\n\n❗️Botga habar yozmang❗️</b>",
+            "<b>Bu bot orqali kanaldagi pornhwalarni yuklab olishingiz mumkin.\n\n❗️Botga habar yozmang❗️</b>",
             reply_markup=markup)
         functions.add_premium_reaction(bot, sent.chat.id, sent.message_id, "🎉")
         return
@@ -1223,14 +1223,14 @@ def start(message):
         markup.add(InlineKeyboardButton("📝 Bot Haqida", callback_data="about"),
                    InlineKeyboardButton("🔒 Yopish", callback_data=f"close:{message.message_id}"))
         sent = bot.reply_to(message,
-            "<b>Bu bot orqali kanaldagi animelarni yuklab olishingiz mumkin.\n\n❗️Botga habar yozmang❗️</b>",
+            "<b>Bu bot orqali kanaldagi pornhwalarni yuklab olishingiz mumkin.\n\n❗️Botga habar yozmang❗️</b>",
             reply_markup=markup)
         functions.add_premium_reaction(bot, sent.chat.id, sent.message_id, "🎉")
         return
 
     items = list(contents.find({"code": code}).sort("order", 1))
     if not items:
-        sent = bot.send_message(message.chat.id, "❌ Kontent topilmadi.")
+        sent = bot.send_message(message.chat.id, "")
         functions.add_premium_reaction(bot, sent.chat.id, sent.message_id, "❌")
         return
 
@@ -1247,11 +1247,11 @@ def start(message):
         kb = get_required_keyboard(uid, code)
         if settings and settings.get("image_id"):
             sent = bot.send_photo(message.chat.id, settings["image_id"],
-                caption="📢 <b>Animeni yuklab olish uchun quyidagi kanallarga obuna bo'ling:</b>",
+                caption="📢 <b>Pornhwani yuklab olish uchun quyidagi kanallarga obuna bo'ling:</b>",
                 reply_markup=kb)
         else:
             sent = bot.send_message(message.chat.id,
-                "📢 <b>Animeni yuklab olish uchun quyidagi kanallarga obuna bo'ling:</b>",
+                "📢 <b>Pornhwani yuklab olish uchun quyidagi kanallarga obuna bo'ling:</b>",
                 reply_markup=kb)
         last_prompt_msg[uid] = sent.message_id
         functions.add_premium_reaction(bot, sent.chat.id, sent.message_id, "🔔")
@@ -1303,9 +1303,8 @@ def callback(call):
                 "❏ Botni ishlatish qo'llanmasi:\n"
                 "1. Kanallarga obuna bo'ling!\n"
                 "2. Botlarga start bosing!\n"
-                "3. Tekshirish tugmasini bosing ✅\n"
-                "4. Kanaldagi anime post past qismidagi yuklab olish tugmasini bosing\n\n"
-                "📢 Kanal: <i>@AniGonUz</i></b>"
+                "4. Kanaldagi pornhwa post past qismidagi yuklab olish tugmasini bosing\n\n"
+                "📢 Kanal: <i>@AniManxwa, & @AniPornhwa</i></b>"
             ),
             reply_markup=markup, parse_mode="HTML"
         )
@@ -1319,8 +1318,8 @@ def callback(call):
             text=(
                 "<b>"
                 "• Admin: <i>@Shadow_Sxi</i>\n"
-                "• Asosiy Kanal: <i>@AniGonUz</i>\n"
-                "• Reklama: <i>@AniReklamaUz</i>\n\n"
+                "• Asosiy Kanal: <i>@AniManxwa</i>\n"
+                "• Reklama: <i>Hozircha mavjud emas ❌️</i>\n\n"
                 "👨‍💻 Savollar Bo'lsa: <i>@AniManxwaBot</i>"
                 "</b>"
             ),

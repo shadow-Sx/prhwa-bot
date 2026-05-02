@@ -1168,13 +1168,13 @@ def send_content(chat_id, items, is_batch=False):
             elif item["type"] == "video_note":
                 msg = bot.send_video_note(chat_id, item["file_id"], reply_markup=markup)
             if msg:
-                schedule_delete(chat_id, msg.message_id, 300)
+                schedule_delete(chat_id, msg.message_id, 604800)
         except:
             pass
 
     warn = bot.send_message(chat_id,
-        "<b>⚠️ ESLATMA ⚠️\n<blockquote>❗ Ushbu habarlar Ba'zi sabablarga kora 5 daqiqadan so'ng o'chiriladi.</blockquote></b>")
-    schedule_delete(chat_id, warn.message_id, 300)
+        "")
+    schedule_delete(chat_id, warn.message_id, 604800)
 
     user = users_collection.find_one({"user_id": chat_id})
     count = user.get("content_count", 0) + (len(items) if is_batch else 1)
@@ -1302,8 +1302,8 @@ def callback(call):
                 "<b>Botni ishlatishni bilmaganlar uchun!\n\n"
                 "❏ Botni ishlatish qo'llanmasi:\n"
                 "1. Kanallarga obuna bo'ling!\n"
-                "2. Botlarga start bosing!\n"
-                "4. Kanaldagi pornhwa post past qismidagi yuklab olish tugmasini bosing\n\n"
+                "2. Tasdiqlash tugmasini bosing ✅️\n"
+                "3. Kanaldagi pornhwa post past qismidagi yuklab olish tugmasini bosing\n\n"
                 "📢 Kanal: <i>@AniManxwa, & @AniPornhwa</i></b>"
             ),
             reply_markup=markup, parse_mode="HTML"

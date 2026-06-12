@@ -27,7 +27,7 @@ functions.set_bot_username(BOT_USERNAME)
 MONGO_URI = os.getenv("MONGO_URI")
 client = MongoClient(MONGO_URI)
 
-db = client["pornxwabot"]
+db = client["xanimelar_bot"]
 contents = db["contents"]
 required_channels_collection = db["required_channels"]
 optional_channels_collection = db["optional_channels"]
@@ -44,7 +44,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Manhwa is running!"
+    return "PornxwaBot faol ishlamoqda!"
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -56,7 +56,7 @@ def webhook():
 def keep_alive():
     while True:
         try:
-            requests.get("https://yuklovchi-bot-5kne.onrender.com")
+            requests.get("https://prhwa-bot-fofu.onrender.com")
         except:
             pass
         time.sleep(60)
@@ -1205,7 +1205,7 @@ def start(message):
         markup.add(InlineKeyboardButton("📝 Bot Haqida", callback_data="about"),
                    InlineKeyboardButton("🔒 Yopish", callback_data=f"close:{message.message_id}"))
         sent = bot.reply_to(message,
-            "<b>Bu bot orqali kanaldagi pornhwalarni yuklab olishingiz mumkin.\n\n❗️Botga habar yozmang❗️</b>",
+            "<b>Bu bot orqali kanaldagi Pornhwalarni yuklab olishingiz mumkin.\n\n❗️Botga habar yozmang❗️</b>",
             reply_markup=markup)
         functions.add_premium_reaction(bot, sent.chat.id, sent.message_id, "🎉")
         return
@@ -1223,7 +1223,7 @@ def start(message):
         markup.add(InlineKeyboardButton("📝 Bot Haqida", callback_data="about"),
                    InlineKeyboardButton("🔒 Yopish", callback_data=f"close:{message.message_id}"))
         sent = bot.reply_to(message,
-            "<b>Bu bot orqali kanaldagi pornhwalarni yuklab olishingiz mumkin.\n\n❗️Botga habar yozmang❗️</b>",
+            "<b>Bu bot orqali kanaldagi Pornhwalarni yuklab olishingiz mumkin.\n\n❗️Botga habar yozmang❗️</b>",
             reply_markup=markup)
         functions.add_premium_reaction(bot, sent.chat.id, sent.message_id, "🎉")
         return
@@ -1302,9 +1302,10 @@ def callback(call):
                 "<b>Botni ishlatishni bilmaganlar uchun!\n\n"
                 "❏ Botni ishlatish qo'llanmasi:\n"
                 "1. Kanallarga obuna bo'ling!\n"
-                "2. Tasdiqlash tugmasini bosing ✅️\n"
-                "3. Kanaldagi pornhwa post past qismidagi yuklab olish tugmasini bosing\n\n"
-                "📢 Kanal: <i>@AniManxwa, & @AniPornhwa</i></b>"
+               
+                "2. Tekshirish tugmasini bosing ✅\n"
+                "3. Kanaldagi Pornhwa post past qismidagi yuklab olish tugmasini bosing\n\n"
+                "📢 Kanal: <i>@Pornxwa</i></b>"
             ),
             reply_markup=markup, parse_mode="HTML"
         )
@@ -1318,9 +1319,9 @@ def callback(call):
             text=(
                 "<b>"
                 "• Admin: <i>@Shadow_Sxi</i>\n"
-                "• Asosiy Kanal: <i>@AniManxwa</i>\n"
-                "• Reklama: <i>Hozircha mavjud emas ❌️</i>\n\n"
-                "👨‍💻 Savollar Bo'lsa: <i>@AniManxwaBot</i>"
+                "• Asosiy Kanal: <i>@Pornxwa</i>\n"
+                "• Reklama: <i>@Shadow_Sxi</i>\n\n"
+                "👨‍💻 Savollar Bo'lsa: <i>@Manga_Chat_Uz</i>"
                 "</b>"
             ),
             reply_markup=markup, parse_mode="HTML"
